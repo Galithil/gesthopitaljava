@@ -1,5 +1,3 @@
-package pierre.bioinfo.m2r;
-
 public class Main {
 
 	/**
