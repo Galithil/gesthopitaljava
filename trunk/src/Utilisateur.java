@@ -1,26 +1,24 @@
-package pierre.bioinfo.m2r;
 import java.util.*;
 
 public class Utilisateur {
 	
-	String idUtilisateur, nom, prenom, typeUtilisateur;
-	Hashtable<String, Droit> listeDroit;
+	private String idUtilisateur, nom, prenom, typeUtilisateur;
+	private Hashtable<String, Droit> listeDroit;
 	
-	public Utilisateur (String n, String p, char tU) {
+	public Utilisateur (String nom, String prenom, char typeUtilisateur) {
 		
-		if ( tU=='d' || tU=='a' || tU=='m' || tU=='i' || tU=='s' ) {
+		if ( typeUtilisateur=='d' || typeUtilisateur=='a' || typeUtilisateur=='m' || typeUtilisateur=='i' || typeUtilisateur=='s' ) {
 			
-			nom = n;
-			prenom = p;
-			idUtilisateur = "";
-			idUtilisateur.concat(n).concat(p);
+			this.nom = nom;
+			this.prenom = prenom;
+			idUtilisateur = new String(nom + prenom);
 			
 			Droit dGP = null, dES = null, dOp = null, dS = null,
 						dM = null, dOb = null, dR = null;
 			
-			switch (tU) {
+			switch (typeUtilisateur) {
 			case 'd':
-				typeUtilisateur = "Directeur";
+				this.typeUtilisateur = "Directeur";
 				dGP = new Droit(true, true);
 				dES = new Droit(false, false);
 				dOp = new Droit(false, false);
@@ -30,7 +28,7 @@ public class Utilisateur {
 				dR = new Droit(false, false);
 			break;
 			case 'a':
-				typeUtilisateur = "Personnel Administratif";
+				this.typeUtilisateur = "Personnel Administratif";
 				dGP = new Droit(false, false);
 				dES = new Droit(true, true);
 				dOp = new Droit(false, false);
@@ -40,7 +38,7 @@ public class Utilisateur {
 				dR = new Droit(false, false);
 			break;
 			case 'm':
-				typeUtilisateur = "Medecin";
+				this.typeUtilisateur = "Medecin";
 				dGP = new Droit(false, false);
 				dES = new Droit(true, false);
 				dOp = new Droit(true, true);
@@ -50,7 +48,7 @@ public class Utilisateur {
 				dR = new Droit(true, false);
 			break;
 			case 'i':
-				typeUtilisateur = "Infirmiere";
+				this.typeUtilisateur = "Infirmiere";
 				dGP = new Droit(false, false);
 				dES = new Droit(true, false);
 				dOp = new Droit(true, false);
@@ -60,7 +58,7 @@ public class Utilisateur {
 				dR = new Droit(true, false);
 			break;
 			case 's':
-				typeUtilisateur = "Aide Soignante";
+				this.typeUtilisateur = "Aide Soignante";
 				dGP = new Droit(false, false);
 				dES = new Droit(true, false);
 				dOp = new Droit(true, false);
@@ -79,10 +77,7 @@ public class Utilisateur {
 			listeDroit.put("Observation", dOb );
 			listeDroit.put("Repas", dR );
 			
-		} else {
-			
-		}
-		
+		} 
 	}
 	
 }

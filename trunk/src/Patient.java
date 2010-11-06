@@ -1,20 +1,17 @@
-package pierre.bioinfo.m2r;
 import java.util.*;
 
 public class Patient {
 	
-	String nom, prenom, adresse, tel, noSecu;
-	Hashtable<String, Fiche> listeFiche;
+	private String nom, prenom, adresse, tel, noSecu;
+	private Hashtable<String, Fiche> listeFiche;
 	
-	public Patient (String n, String p, String a, String t, String nS) {
+	public Patient (String nom, String prenom, String adresse, String tel, String noSecu) {	
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.tel = tel;
+		this.noSecu = noSecu;
 		
-		nom = n;
-		prenom = p;
-		adresse = a;
-		tel = t;
-		noSecu = nS;
-		
-		listeFiche = new Hashtable<String, Fiche>();
-		
+		listeFiche = new Hashtable<String, Fiche>();		
 	}
 }

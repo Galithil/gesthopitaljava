@@ -1,13 +1,11 @@
-package pierre.bioinfo.m2r;
-
 public class Droit {
 	
-	boolean lecture, ecriture;
+	private boolean lecture, ecriture;
 	
-	public Droit (boolean droitLecture, boolean droitEcriture) {
+	public Droit (boolean lecture, boolean ecriture) {
 		
-		lecture = droitLecture;
-		ecriture = droitEcriture;
+		this.lecture = lecture;
+		this.ecriture = ecriture;
 		
 	}
 }
