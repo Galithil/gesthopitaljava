@@ -7,10 +7,10 @@ public class Information {
 	private Personnel personne;
 	
 	public Information() {
-		
 		date = new GregorianCalendar();
-		
 	}
 
-
+	public GregorianCalendar getDate() {
+		return date;
+	}
 }
