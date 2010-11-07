@@ -14,12 +14,6 @@ public class Patient {
 		this.tel = tel;
 		this.noSecu = noSecu;
 		
-		nom = n;
-		prenom = p;
-		adresse = a;
-		tel = t;
-		noSecu = nS;
-		
 		listeFiche = new Hashtable<GregorianCalendar, Fiche>();
 		
 	}

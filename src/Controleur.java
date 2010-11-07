@@ -92,9 +92,9 @@ public int ajouterOperation (String noSecu, GregorianCalendar dateDerniereFiche,
 				
 				Information information = new Information();
 				
-				if (!listePatient.get(noSecu).listeFiche.get(dateDerniereFiche).listeInformation.containsKey(information.date)) {
+				if (!listePatient.get(noSecu).listeFiche.get(dateDerniereFiche).listeInformation.containsKey(information.getDate())) {
 				
-					listePatient.get(noSecu).listeFiche.get(dateDerniereFiche).listeInformation.put(information.date.toString(), information);
+					listePatient.get(noSecu).listeFiche.get(dateDerniereFiche).listeInformation.put(information.getDate().toString(), information);
 					return 1;
 					
 				} else return 0;
