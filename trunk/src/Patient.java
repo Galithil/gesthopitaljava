@@ -1,9 +1,11 @@
+
 import java.util.*;
 
 public class Patient {
 	
-	private String nom, prenom, adresse, tel, noSecu;
-	private Hashtable<String, Fiche> listeFiche;
+	String nom, prenom, adresse, tel, noSecu;
+	GregorianCalendar dateDerniereFiche;
+	Hashtable<GregorianCalendar, Fiche> listeFiche;
 	
 	public Patient (String nom, String prenom, String adresse, String tel, String noSecu) {	
 		this.nom = nom;
@@ -12,6 +14,14 @@ public class Patient {
 		this.tel = tel;
 		this.noSecu = noSecu;
 		
-		listeFiche = new Hashtable<String, Fiche>();		
+		nom = n;
+		prenom = p;
+		adresse = a;
+		tel = t;
+		noSecu = nS;
+		
+		listeFiche = new Hashtable<GregorianCalendar, Fiche>();
+		
 	}
 }
+

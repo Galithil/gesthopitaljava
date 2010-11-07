@@ -1,10 +1,21 @@
+
 import java.util.*;
 
 public class Operation {
 
-	private GregorianCalendar date;
-	private String type;
-	private ArrayList<Personnel> listePersonnelPresent;
-	private ArrayList<String> observationsDiverses;
+	GregorianCalendar date;
+	String type;
+	Hashtable<String, Personnel> listePersonnelPresent;
+	Vector<String> observationsDiverses;
+	
+	public Operation(String t) {
+		
+		date = new GregorianCalendar();
+		type = t;
+		
+		listePersonnelPresent = new Hashtable<String, Personnel>();
+		observationsDiverses = new Vector<String>();
+		
+	}	
 	
 }
