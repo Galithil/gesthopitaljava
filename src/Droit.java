@@ -2,12 +2,12 @@
 
 public class Droit {
 	
-	private boolean lecture, ecriture;
+	boolean lecture, ecriture;
 	
-	public Droit (boolean lecture, boolean ecriture) {
+	public Droit (boolean droitLecture, boolean droitEcriture) {
 		
-		this.lecture = lecture;
-		this.ecriture = ecriture;
+		lecture = droitLecture;
+		ecriture = droitEcriture;
 		
 	}
 }

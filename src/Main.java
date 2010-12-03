@@ -15,16 +15,20 @@ public class Main {
 		
 		mainControleur=new Controleur();
 		
+		
+
+//		new File("gest.data").delete();
 		if((new File("gest.data")).exists()){
-			
 		try{
 			FileInputStream filein = new FileInputStream("gest.data");
 			ObjectInputStream ois= new ObjectInputStream(filein);
 			mainControleur=(Controleur) ois.readObject();
+			mainControleur.loginUtilisateurCourant="";
 			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("plop");
 		}
 		
 		}else{
@@ -33,7 +37,6 @@ public class Main {
 			mainControleur.listePersonnel.put(boss.login, boss);
 			
 		}
-		
 		
 		Basemenu objet1 = new Basemenu(mainControleur);
 	}

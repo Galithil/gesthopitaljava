@@ -1,20 +1,26 @@
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Patient {
-	
+public class Patient implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String nom, prenom, adresse, tel, noSecu;
 	GregorianCalendar dateDerniereFiche;
-	Hashtable<GregorianCalendar, Fiche> listeFiche;
-	
-	public Patient (String nom, String prenom, String adresse, String tel, String noSecu) {	
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.tel = tel;
-		this.noSecu = noSecu;
+	Hashtable<Long, Fiche> listeFiche;
+
+	public Patient (String n, String p, String a, String t, String nS) {
 		
-		listeFiche = new Hashtable<GregorianCalendar, Fiche>();
+		nom = n;
+		prenom = p;
+		adresse = a;
+		tel = t;
+		noSecu = nS;
+		
+		listeFiche = new Hashtable<Long, Fiche>();
 		
 	}
 }

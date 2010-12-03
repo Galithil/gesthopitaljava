@@ -31,7 +31,7 @@ public class Basemenu implements ActionListener{
 	
 	
 	pan1.add(new JLabel("Login :"));
-	log = new JTextField(37);
+	log = new JTextField(25);
 	pan1.add(log);
 	
 	JPanel pan2 = new JPanel();
@@ -40,7 +40,7 @@ public class Basemenu implements ActionListener{
 	
 	pan2.add(new JLabel("Password :"));
 	
-	pw = new JPasswordField(37);
+	pw = new JPasswordField(25);
 	pan2.add(pw);
 	
 	JPanel pan3 = new JPanel();
@@ -62,8 +62,11 @@ public class Basemenu implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getActionCommand().equals("valider")){
 			
+			
 			String givenpw=pw.getText();
 			String givenlog=log.getText();
+			
+			
 			
 				if(myControler.listePersonnel.get(givenlog) == null){
 				
@@ -73,6 +76,7 @@ public class Basemenu implements ActionListener{
 				
 				
 				fenetre.dispose();
+				myControler.loginUtilisateurCourant=givenlog;
 				new Gestmenu(myControler);
 				
 			}else {
