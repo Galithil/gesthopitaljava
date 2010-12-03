@@ -1,0 +1,26 @@
+KOMIT
+
+--This line, and those below, will be ignored--
+
+AM   src/Basemenu.java
+M    src/Operation.java
+AM   src/Rempersmenu.java
+M    src/Patient.java
+M    src/Personnel.java
+AM   src/Medicament.java
+AM   src/Addpersmenu.java
+A    src/AddFichMenu.java
+AM   src/Soin.java
+M    src/Utilisateur.java
+AM   src/Repas.java
+M    src/Fiche.java
+A    src/AddOpeMenu.java
+M    src/Droit.java
+AM   src/Addpatmenu.java
+AM   src/GH.class
+M    src/Main.java
+M    src/Information.java
+AM   src/Gestmenu.java
+AM   src/Observation.java
+M    src/Controleur.java
+AM   src/MenuAjoutPersonnel.java
