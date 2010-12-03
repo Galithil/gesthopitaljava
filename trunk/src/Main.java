@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
+import javax.swing.UIManager;
+
 
 
 public class Main {
@@ -15,7 +17,11 @@ public class Main {
 		
 		mainControleur=new Controleur();
 		
-		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.err.println("Impossible d'activer le look-and-feel systeme");
+		}
 
 //		new File("gest.data").delete();
 		if((new File("gest.data")).exists()){

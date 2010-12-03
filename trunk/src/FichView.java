@@ -105,7 +105,7 @@ public class FichView implements ActionListener{
 		pan.setLayout(new BorderLayout());
 		content.add(pan);
 		Object[] objL=myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeOperation.values().toArray();
-		JList opes=new JList(objL);
+		opes=new JList(objL);
 
 		pan.add(new JLabel("Operations: "), BorderLayout.NORTH);
 		pan.add(opes, BorderLayout.CENTER);
@@ -114,7 +114,7 @@ public class FichView implements ActionListener{
 		pan.setLayout(new BorderLayout());
 		content.add(pan);
 		objL=myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeSoin.values().toArray();
-		JList soins=new JList(objL);
+		soins=new JList(objL);
 		pan.add(new JLabel("Soins: "), BorderLayout.NORTH);
 		pan.add(soins, BorderLayout.CENTER);
 		
@@ -122,7 +122,7 @@ public class FichView implements ActionListener{
 		pan = new JPanel();
 		pan.setLayout(new BorderLayout());
 		content.add(pan);
-		JList meds=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeMedicament.values().toArray());
+		meds=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeMedicament.values().toArray());
 
 		pan.add(new JLabel("Medicaments: "), BorderLayout.NORTH);
 		pan.add(new JScrollPane(meds), BorderLayout.CENTER);
@@ -130,7 +130,7 @@ public class FichView implements ActionListener{
 		pan = new JPanel();
 		pan.setLayout(new BorderLayout());
 		content.add(pan);
-		JList obs=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeObservation.values().toArray());
+		obs=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeObservation.values().toArray());
 
 		pan.add(new JLabel("Observations: "), BorderLayout.NORTH);
 		pan.add(new JScrollPane(obs), BorderLayout.CENTER);
@@ -138,7 +138,7 @@ public class FichView implements ActionListener{
 		pan = new JPanel();
 		pan.setLayout(new BorderLayout());
 		content.add(pan);
-		JList reps=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeRepas.values().toArray());
+		reps=new JList(myControler.listePatient.get(numss.getSelectedItem().toString()).listeFiche.get(Long.parseLong(fiches.getSelectedItem().toString())).listeRepas.values().toArray());
 
 		pan.add(new JLabel("Repas: "), BorderLayout.NORTH);
 		pan.add(new JScrollPane(reps), BorderLayout.CENTER);
@@ -176,10 +176,7 @@ public class FichView implements ActionListener{
 			
 				System.out.println(objL[i]);
 			}
-			System.out.println(objL);
-			opes.setListData(objL);
-		//plante a ce niveau. Apparemment, objL ne contient pas une liste d'Operation, bien que le meme code fonctionne au dessus.
-			
+			opes.setListData(objL);			
 		}
 		
 	}
