@@ -3,6 +3,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,76 +16,167 @@ import javax.swing.JPanel;
 public class Gestmenu implements ActionListener{
 
 	public JFrame fenetre;
+	public Controleur myControler;
 	
-	public Gestmenu(Controleur myControler){
+	public Gestmenu(Controleur theControler){
 	
-		
+		myControler=theControler;
 		fenetre=new JFrame();
 		fenetre.setTitle("Gestionnaire Hopital");
 
 		
 		Container content = fenetre.getContentPane();
-		content.setLayout(new GridLayout(7,1));
+		content.setLayout(new GridLayout(8,1));
 		
 		
 		
-		JPanel pan1 = new JPanel();
-		content.add(pan1);
-		pan1.setLayout(new FlowLayout(FlowLayout.CENTER));
+		JPanel pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton addpers = new JButton("Ajouter un membre du personnel");
 		addpers.setActionCommand("newpers");
 		addpers.addActionListener(this);
-		pan1.add(addpers);
+		pan.add(addpers);
 		
-		JPanel pan2 = new JPanel();
-		content.add(pan2);
-		pan2.setLayout(new FlowLayout(FlowLayout.CENTER));
+		 pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton rempers = new JButton("Retirer un membre du personnel");
 		rempers.setActionCommand("delpers");
 		rempers.addActionListener(this);
-		pan2.add(rempers);
+		pan.add(rempers);
 		
-		JPanel pan3 = new JPanel();
-		content.add(pan3);
-		pan3.setLayout(new FlowLayout(FlowLayout.CENTER));
+		 pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton addpat = new JButton("Ajouter un nouveau patient");
 		addpat.setActionCommand("newpat");
 		addpat.addActionListener(this);
-		pan3.add(addpat);
+		pan.add(addpat);
 		
-		JPanel pan4 = new JPanel();
-		content.add(pan4);
-		pan4.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
+		pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton addfich = new JButton("Ajouter une fiche d'hospitalisation");
 		addfich.setActionCommand("newfich");
 		addfich.addActionListener(this);
-		pan4.add(addfich);
+		pan.add(addfich);
 		
-		JPanel pan5 = new JPanel();
-		content.add(pan5);
-		pan5.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton addope = new JButton("Entrer une operation");
 		addope.setActionCommand("newope");
 		addope.addActionListener(this);
-		pan5.add(addope);
+		pan.add(addope);
 		
-		JPanel pan6 = new JPanel();
-		content.add(pan6);
-		pan6.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton addinf = new JButton("Ajouter des informations supplementaires");
-		addinf.setActionCommand("newpat");
+		addinf.setActionCommand("newinf");
 		addinf.addActionListener(this);
-		pan6.add(addinf);
+		pan.add(addinf);
 
 		
-		JPanel pan7 = new JPanel();
-		content.add(pan7);
-		pan7.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JButton seefich = new JButton("Acceder a une fiche");
 		seefich.setActionCommand("lookfich");
 		seefich.addActionListener(this);
-		pan7.add(seefich);
+		pan.add(seefich);
+		
+		pan = new JPanel();
+		content.add(pan);
+		pan.setLayout(new FlowLayout(FlowLayout.CENTER));
+		JButton save = new JButton("Sauvegarder");
+		save.setActionCommand("save");
+		save.addActionListener(this);
+		pan.add(save);
 
+		
+//		Taking care of the rights
+		
+if (myControler.listePersonnel.get(myControler.loginUtilisateurCourant).typePersonnel.equals("d")){
+			
+			addpers.setEnabled(true);
+			rempers.setEnabled(true);
+			addpat.setEnabled(false);
+			addfich.setEnabled(false);
+			addope.setEnabled(false);
+			addinf.setEnabled(false);
+			seefich.setEnabled(false);
+			
+			
+		}else if (myControler.listePersonnel.get(myControler.loginUtilisateurCourant).typePersonnel.equals("pA")){
+			
+			addpers.setEnabled(false);
+			rempers.setEnabled(false);
+			addpat.setEnabled(true);
+			addfich.setEnabled(true);
+			addope.setEnabled(false);
+			addinf.setEnabled(false);
+			seefich.setEnabled(false);
+			save.setEnabled(true);
+			
+			
+		}else if (myControler.listePersonnel.get(myControler.loginUtilisateurCourant).typePersonnel.equals("m")){
+			
+			addpers.setEnabled(false);
+			rempers.setEnabled(false);
+			addpat.setEnabled(false);
+			addfich.setEnabled(false);
+			addope.setEnabled(true);
+			addinf.setEnabled(false);
+			seefich.setEnabled(true);
+			save.setEnabled(true);
+			
+			
+		}else if (myControler.listePersonnel.get(myControler.loginUtilisateurCourant).typePersonnel.equals("i")){
+			
+			addpers.setEnabled(true);
+			rempers.setEnabled(true);
+			addpat.setEnabled(false);
+			addfich.setEnabled(false);
+			addope.setEnabled(false);
+			addinf.setEnabled(true);
+			seefich.setEnabled(true);
+			save.setEnabled(true);
+			
+			
+		}else if (myControler.listePersonnel.get(myControler.loginUtilisateurCourant).typePersonnel.equals("aS")){
+			
+			addpers.setEnabled(true);
+			rempers.setEnabled(true);
+			addpat.setEnabled(false);
+			addfich.setEnabled(false);
+			addope.setEnabled(false);
+			addinf.setEnabled(true);
+			seefich.setEnabled(true);
+			save.setEnabled(true);
+			
+			
+		}else{
+			
+			addpers.setEnabled(false);
+			rempers.setEnabled(false);
+			addpat.setEnabled(false);
+			addfich.setEnabled(false);
+			addope.setEnabled(false);
+			addinf.setEnabled(false);
+			seefich.setEnabled(false);
+			save.setEnabled(true);
+			
+			
+		}
+		
+		
+		
+		
+		
+		
 	
 		fenetre.setBounds(300,300,300,600);
 		fenetre.setVisible(true);
@@ -94,7 +188,58 @@ public class Gestmenu implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
+		if (ae.getActionCommand().equals("newpers")){
+		
+
+				 new Addpersmenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("delpers")){
+			
+			
+			new Rempersmenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("newpat")){
+			
+			
+			new Addpatmenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("newfich")){
+			
+			
+			new AddFichMenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("newope")){
+			
+			
+			new AddOpeMenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("newinf")){
+			
+			
+			new AddInfMenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("lookfich")){
+			
+			
+			new FichView(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("newinf")){
+			
+			
+			new AddInfMenu(fenetre,myControler);
+		}else if (ae.getActionCommand().equals("save")){
+			
+		try{
+			
+			FileOutputStream fos=new FileOutputStream("gest.data");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(myControler);
+			oos.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+			System.out.println("Fichier de sauvegarde introuvable !");
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Impossible d'ecrire !");
+		
+		}
+		
+		
+		}
 		
 	}
 }

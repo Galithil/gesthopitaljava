@@ -1,8 +1,17 @@
+import java.io.Serializable;
+
+
 
 //import java.util.*;
 
-public class Personnel {
+public class Personnel implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public static final String[] listeTypeUtilisateur = {"d","pA","m","i","aS"};
 	String login, nom, prenom, typePersonnel, password;
 	
 	public Personnel (String n, String p, String tP, String pw) {
@@ -23,6 +32,12 @@ public class Personnel {
 		typePersonnel = tP;
 		password = "password";
 		
+	}
+
+	public static String[] getListetypeutilisateur() {
+		
+		return listeTypeUtilisateur;
+	
 	}
 	
 }

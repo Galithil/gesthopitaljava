@@ -1,16 +1,21 @@
-
+import java.io.Serializable;
 import java.util.*;
 
-public class Information {
+public class Information implements Serializable{
 	
-	private GregorianCalendar date;
-	private Personnel personne;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Long date;
+	Personnel personne;
 	
-	public Information() {
-		date = new GregorianCalendar();
+	public Information(Personnel p) {
+		
+		date = new GregorianCalendar().getTimeInMillis();
+		personne = p;
+		
 	}
 
-	public GregorianCalendar getDate() {
-		return date;
-	}
+
 }
